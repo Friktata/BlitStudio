@@ -1,0 +1,20 @@
+{
+  "name": "blitstudio",
+  "version": "1.0.0",
+  "description": "Retro 8 and 16-bit animation studio",
+  "homepage": "https://github.com/Friktata/BlitStudio#readme",
+  "bugs": {
+    "url": "https://github.com/Friktata/BlitStudio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Friktata/BlitStudio.git"
+  },
+  "license": "MIT",
+  "author": "Friktata",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
