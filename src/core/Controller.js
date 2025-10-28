@@ -32,7 +32,7 @@
     import { BlitArtist } from "../plugins/BlitArtist/BlitArtist.js";
 
 
-    export const Controller = () =>
+    export const Controller = async () =>
     {
 
         const   _render_target  = document.querySelectorAll('[blitstudio]');
@@ -62,19 +62,19 @@
      *  __build_blitstudio_ui()
      * 
      */
-        const   __build_blitstudio_ui = () =>
+        const   __build_blitstudio_ui = async () =>
         {
 
             _console.log(`+-- Initialising BlitStudio components...\n|`);
 
     //  Load and render the root 'Display' component.
     //
-            const   _display = _utilities['components'].new_component(
+            const   _display = await _utilities['components'].new_component(
                 Display.id,
                 Display
             );
 
-            _console.log(`|\n+-- Done!\n|`);
+            _console.log(`+-- Done!\n|`);
             
 
         };
@@ -84,7 +84,7 @@
      *  __initialise()
      * 
      */
-        const   __initialise = () =>
+        const   __initialise = async () =>
         {
 
             _console.log(`+- Initialising BlitStudio...\n|`);
@@ -92,7 +92,7 @@
     //  Fire up additional modules/subsystems here.
     //  
             const   _store = Store(_utilities);
-            const   _components = Components(_utilities);
+            const   _components = await Components(_utilities);
 
             _utilities['store'] = _store;
             _utilities['components'] = _components;
@@ -116,11 +116,11 @@
 
     //  Now we need to build the BlitStudio UI...
     //
-            __build_blitstudio_ui();
+            await __build_blitstudio_ui();
 
     //  Start the BlitArtist module.
     //
-            __plugins['artist'] = BlitArtist(_utilities);
+            __plugins['artist'] = await BlitArtist(_utilities);
 
         };
 
@@ -138,7 +138,7 @@
 
 
         if (typeof __initialise === 'function') {
-            __initialise();
+            await __initialise();
         }
 
 

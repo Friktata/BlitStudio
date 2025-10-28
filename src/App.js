@@ -6,8 +6,8 @@
     import { BlitStudio } from "./BlitStudio.js";
 
 
-    (function Main() {
+    (async function Main() {
 
-        const   __blitstudio = BlitStudio();
+        const   __blitstudio = await BlitStudio();
 
     }());

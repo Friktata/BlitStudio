@@ -10,7 +10,7 @@
     import { Component } from "./Component.js";
 
 
-    export const Components = (
+    export const Components = async (
         config
     ) =>
     {
@@ -89,7 +89,7 @@
      *  _new_component()
      * 
      */
-        const   _new_component = (
+        const   _new_component = async (
             component_id,
             component_config = false
         ) => {
@@ -100,15 +100,17 @@
                 return __console.warning(`Error in new_component(): Component id '${component_id}' is not unique`);
             }
 
+            __console.log(`+--- Creating component ${component_id}...`);
+
     //  Create the component.
     //
-            let _component = Component(config, component_id, component_config);
+            let _component = await Component(config, component_id, component_config);
 
             _state['id'].push(component_id);
-            _state['components'].push(_component.get_state());
+            _state['components'].push(_component.get_raw_state());
 
             // __console.log(`+--- Created component ${component_id} ${JSON.stringify(_component.get_state(), null, 3)}\n`);
-            __console.log(`+--- Created component ${component_id}\n`);
+            __console.log(`+--- Created component ${component_id}\n|`);
 
         };
 

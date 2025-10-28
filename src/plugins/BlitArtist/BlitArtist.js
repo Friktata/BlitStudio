@@ -6,7 +6,7 @@
     import { DefaultThemes } from "../../themes/Default.js";
 
 
-    export const BlitArtist = (
+    export const BlitArtist = async (
         utilities
     ) =>
     {
@@ -23,7 +23,7 @@
      *  __initialise()
      * 
      */
-        const   __initialise = () =>
+        const   __initialise = async () =>
         {
 
             if (typeof __console !== 'object') {
@@ -36,13 +36,7 @@
                 __console.error("Helpers module not loaded!");
             }
 
-            utilities['cleanup'] = [
-                function () {
-                    console.log("Cleanup function 1");
-                }
-            ];
-
-            __console.log("+- BlitArtist module loaded!\n|");
+            __console.log("+- Initialising BlitArtist...\n|");
 
         };
 
@@ -149,7 +143,7 @@
 
 
         if (typeof __initialise === 'function') {
-            __initialise();
+            await __initialise();
         }
 
 

@@ -6,22 +6,23 @@
     import { Controller } from "./core/Controller.js";
 
 
-    export const BlitStudio = () => {
+    export const BlitStudio = async () => {
 
 
     /**************************************************************************
      *  __initialise()
      * 
      */
-        const   __initialise = () => {
+        const   __initialise = async () =>
+        {
 
-            const   __controller = Controller();
+            const   __controller = await Controller();
 
         };
 
 
         if (typeof __initialise === 'function') {
-            __initialise();
+            await __initialise();
         }
 
 

@@ -11,7 +11,7 @@
     //
         let     _components_path    = '../components';
 
-        let     _template_path      = '../assets/templates';
+        let     _template_path      = '../../assets/templates';
 
         let     _style_path         = '../assets/style';
 

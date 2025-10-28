@@ -46,7 +46,7 @@
     //  The termplate string to render - this should define the
     //  HTML for the component interface.
     //
-            'template':         `Template string`,
+            'template':         `Display`,
 
     //  We can add a string template which is fine for smaller
     //  componets like buttons.
@@ -56,7 +56,7 @@
     //  the template is stored in a file - these files are located
     //  in the assets/templates directory by default.
     //
-            'template_file':    false
+            'template_file':    true
 
         };
 
