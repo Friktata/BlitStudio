@@ -4,10 +4,16 @@
 //
 
     export const Component = (
+        config,
         component_id,
         component_config
     ) =>
     {
+
+        const   __config            = structuredClone(config['config']);
+
+        const   __helpers           = config['helpers'] ?? false;
+        const   __console           = config['console'] ?? false;
 
         let     _state              = {};
 
@@ -22,7 +28,15 @@
         ) =>
         {
 
+    //  The root component must have a render target.
+    //
+            if (! config.hasOwnProperty('target')) {
+                __console.error(`Error in __new_component: No render target element specified`);
+            }
+
             let __component =   {
+
+                'target':           config['target'],
 
     //  Component/element id.
     //
@@ -76,6 +90,25 @@
 
             };
 
+    //  If the config has a 'template_file' property and it 's set to
+    //  true then _state['template'] is a path to a template file - this
+    //  file must be fetched and copied to _state['template'] for
+    //  rendering.
+    //
+    //  We can grab the template path from the main config.
+    //
+            const   __template_path = config['template_path'];
+
+    //  Same goes with 'style_file' - if this property exists and is true
+    //  then 'style' is a path to a file containing css.
+    //
+    //  This file must be fetched and stored in 'style'.
+    //
+    //  Again, we can get the root path to the stylesheets from the main
+    //  config.
+    //
+            const   __style_path = config['style_path'];
+
             return __component
 
         };
@@ -87,6 +120,16 @@
      */
         const   __initialise = () =>
         {
+
+            if (typeof __console !== 'object') {
+                throw new Error("Console module not loaded!");
+            }
+            if (typeof __config !== 'object') {
+                __console.error("Config object not defined!");
+            }
+            if (typeof __helpers !== 'object') {
+                __console.error("Helpers module not loaded!");
+            }
 
             _state = __new_component(component_id, component_config);
 

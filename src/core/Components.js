@@ -3,6 +3,10 @@
 //
 //
 
+
+///////////////////////////////////////////////////////////////////////////////
+//  We need the Component module.
+//
     import { Component } from "./Component.js";
 
 
@@ -11,10 +15,13 @@
     ) =>
     {
 
-        const   __config            = config;
+        const   __config            = config['config'];
 
-        const   __helpers           = __config['helpers'] ?? false;
-        const   __console           = __config['console'] ?? false;
+        const   __helpers           = config['helpers'] ?? false;
+        const   __console           = config['console'] ?? false;
+
+
+        const   __components        = {};
 
 
     /**************************************************************************
@@ -48,6 +55,8 @@
             if (typeof __helpers !== 'object') {
                 __console.error("Helpers module not loaded!");
             }
+
+            __console.log(`+-- Initialised Components module\n|`);
 
         };
 
@@ -93,12 +102,13 @@
 
     //  Create the component.
     //
-            let _component = Component(component_config);
+            let _component = Component(config, component_id, component_config);
 
             _state['id'].push(component_id);
-            _state['components'].push(_component);
+            _state['components'].push(_component.get_state());
 
-            __console.log(` Created component ${component_id} ${JSON.stringify(_component, null, 3)}`);
+            // __console.log(`+--- Created component ${component_id} ${JSON.stringify(_component.get_state(), null, 3)}\n`);
+            __console.log(`+--- Created component ${component_id}\n`);
 
         };
 

@@ -42,7 +42,7 @@
                 }
             ];
 
-            __console.log("BlitArtist module loaded!");
+            __console.log("+- BlitArtist module loaded!\n|");
 
         };
 
